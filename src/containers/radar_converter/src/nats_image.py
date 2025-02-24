@@ -23,25 +23,25 @@ async def update_heading(parsed_args):
   global heading
   logger = logging.getLogger(update_heading.__name__)
   logger.info("listening for heading updates")
-  nc = await nats.connect(parsed_args['nats_url'])
+  nc = await nats.connect(parsed_args['nats_url']) # establishes a persistent connection to NATS.
   while True:
     try:
-      js = nc.jetstream()
+      js = nc.jetstream() # initializes the JetStream client.
       break
     except:
       await asyncio.sleep(3)
 
   while True:
     try:
-      kv = await js.key_value(bucket='MATRIX')
+      kv = await js.key_value(bucket='MATRIX') # Accesses the MATRIX key-value bucket.Used for storing and retrieving values in NATS JetStream.
       break
     except:
       traceback.print_exc()
       await asyncio.sleep(3)
-  w = await kv.watch("heading")
+  w = await kv.watch("heading") # Watches for updates on the "heading" key. Whenever the key changes, the watcher (w) will receive the new value.
   while True:
     try:
-      e = await w.updates(timeout=10)
+      e = await w.updates(timeout=10) # Waits up to 10 seconds for a new update on "heading". If no update arrives, it raises nats.errors.TimeoutError.
       if e is not None:
         val = struct.unpack("f", e.value)[0]
         heading = round(ANGULAR_RES * val / 360.0)
@@ -72,8 +72,13 @@ async def send_radar(parsed_args):
   with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as radarsock:
     radarsock.setblocking(False)
     radarsock.bind(radarAddress)
+    # Binds the socket to the multicast address and port, meaning: 
+    # The program will (listen for and) be able to send multicast packets at 236.6.7.8:6678. If another device sends data to this address, the socket will receive it.
     radarsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+    # Allows multiple programs to bind to the same address and port. Useful in multicast scenarios where multiple receivers need to listen.
     if 'multicast_if' in parsed_args and parsed_args['multicast_if'] is not None:
+      # if multicast_if is provided as an argument, it sets the outgoing network interface for multicast traffic.
+      # This ensures the multicast traffic is sent from the correct network interface
       logger.info('Set multicast if to %s', parsed_args['multicast_if'])
       radarsock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_IF, socket.inet_aton(str(parsed_args['multicast_if'])))
     # wait for the matrix to be init
@@ -90,6 +95,7 @@ async def send_radar(parsed_args):
             if k == 32:
                 k = 0
                 await loop.sock_sendto(radarsock, packet, radarAddress)
+                # Sends radar data (packet) to the multicast group (236.6.7.8:6678). Any device listening on the same address and port will receive this data.
                 logger.debug(f'Sent{len(packet)} bytes to{radarAddress}')
                 packet = packet_header
                 await asyncio.sleep(0.019)

@@ -8,11 +8,14 @@ if ! [ -f "$bc5_ini" ]; then
     cp bc5.ini  "$bc5_ini"
 fi
 
-runSed() {
+runSed() { # This function modifies settings in bc5.ini using sed (stream editor). It creates a temporary file, applies the modifications, and replaces the original file.
     tmp=$(mktemp)
     sed -e "$1" "$bc5_ini" > "$tmp"
     mv "$tmp" "$bc5_ini"
 }
+
+# sed (stream editor) processes the file line by line. The -e flag tells sed to execute the given command.
+# s/old/new/ → Substitutes "graphics_mode=3" with "graphics_mode=2".
 
 runSed 's/graphics_mode=3/graphics_mode=2/'
 runSed 's/water_segments=32/water_segments=2/'

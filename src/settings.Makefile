@@ -1,8 +1,8 @@
 # Scenario to instantiate
-SCENARIO_NAME := core
+SCENARIO_NAME := core_simulation
 
 # Should BridgeCommand run in headless mode (1 to enable)
-BC_HEADLESS :=
+BC_HEADLESS := 1
 
 # Scenario to load in BridgeCommand
 BC_SCENARIO := Genoa

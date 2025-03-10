@@ -4,3 +4,7 @@ ppi_asterix_pod_gui_asterix_eth0_ip = 10.1.5.12
 ppi_asterix_pod_gui_asterix_mgmt0_ip = 192.168.249.7
 ppi_navico_pod_opencpn_eth0_ip = 10.1.5.14
 ppi_navico_pod_opencpn_mgmt0_ip = 192.168.249.8
+radar_converter_asterix_pod_radar_converter_eth0_ip = 10.1.5.2
+radar_converter_asterix_pod_radar_converter_nats0_ip = 10.0.0.102
+radar_converter_navico_pod_radar_converter_eth0_ip = 10.1.5.13
+radar_converter_navico_pod_radar_converter_nats0_ip = 10.0.0.102

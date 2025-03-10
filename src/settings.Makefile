@@ -1,5 +1,5 @@
 # Scenario to instantiate
-SCENARIO_NAME := core
+SCENARIO_NAME := core_radar_gui
 
 # Should BridgeCommand run in headless mode (1 to enable)
 BC_HEADLESS :=

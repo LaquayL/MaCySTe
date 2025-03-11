@@ -3,7 +3,8 @@ radar_converter_navico_pod_radar_converter_extra_vars += \
 	buffer_size \
 	bind_interface \
 	protocol \
-	image_multicast_if
+	image_multicast_if \
+	nats_url
 
 radar_converter_navico_pod_radar_converter_extra_var_radar_converter_name = navico
 radar_converter_navico_pod_radar_converter_extra_var_buffer_size = 30

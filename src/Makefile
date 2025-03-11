@@ -232,7 +232,7 @@ up-net-%: up-dummy
 	$(PODMAN) network create \
 		--driver $($(NAME)_NET_DRIVER) \
 		$(if $(filter macvlan,$($(NAME)_NET_DRIVER)), \
-			$(if $($(NAME)_NET_EXTERNAL), --opt parent=ens3, --opt parent=dummy0)) \
+			$(if $($(NAME)_NET_EXTERNAL), --opt parent=$($(NAME)_NET_INTERFACE), --opt parent=dummy0)) \
 		$(if $($(NAME)_NET_INTERNAL),--internal) \
 		--subnet $($(NAME)_NET_CIDR) \
 		$($(NAME)_NET_NAME)

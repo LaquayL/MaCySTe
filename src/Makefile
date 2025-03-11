@@ -231,7 +231,7 @@ up-net-%:
 	$(if $($(NAME)_NET_DRIVER),,$(error network $(NAME) has no driver))
 	$(PODMAN) network create \
 		--driver $($(NAME)_NET_DRIVER) \
-		$(if $(filter macvlan,$($(NAME)_NET_DRIVER)),--opt parent=ens3) \
+		$(if $(filter macvlan,$($(NAME)_NET_DRIVER)),--opt parent=$($(NAME)_NET_INTERFACE)) \
 		$(if $($(NAME)_NET_INTERNAL),--internal) \
 		--subnet $($(NAME)_NET_CIDR) \
 		$($(NAME)_NET_NAME)

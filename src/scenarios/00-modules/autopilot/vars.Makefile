@@ -9,7 +9,8 @@ autopilot_pod_autopilot_extra_vars += \
 	telegraph_l_plc_addr \
 	telegraph_r_plc_host \
 	telegraph_r_plc_port \
-	telegraph_r_plc_addr
+	telegraph_r_plc_addr \
+	nats_url
 
 autopilot_pod_autopilot_extra_var_nmea_host = $(nmea_multicast_ip)
 autopilot_pod_autopilot_extra_var_nmea_port = $(nmea_multicast_port)
@@ -25,3 +26,5 @@ autopilot_pod_autopilot_extra_var_telegraph_l_plc_addr = 0
 autopilot_pod_autopilot_extra_var_telegraph_r_plc_host = $(engine_sim_plc_r_pod_modbus_nats_kv_server_eth0_ip)
 autopilot_pod_autopilot_extra_var_telegraph_r_plc_port = 502
 autopilot_pod_autopilot_extra_var_telegraph_r_plc_addr = 0
+
+autopilot_pod_autopilot_extra_var_nats_url ?= nats://$(nats_pod_nats_eth0_ip):4222

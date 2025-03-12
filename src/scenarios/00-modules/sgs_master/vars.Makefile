@@ -1,17 +1,4 @@
 sgs_master_pod_openplc_extra_vars += \
 	plc_name \
-	steering_gear_serial_ip \
-	steering_gear_pump1_plc_serial_ip \
-	steering_gear_pump2_plc_serial_ip \
-	steering_gear_oil1_plc_serial_ip \
-	steering_gear_oil2_plc_serial_ip \
-	steering_gear_oil_tank_plc_serial_ip
 
 sgs_master_pod_openplc_extra_var_plc_name = sgs-master
-
-sgs_master_pod_openplc_extra_var_steering_gear_serial_ip = ${steering_gear_physics_pod_steering_gear_physics_eth0_ip}
-sgs_master_pod_openplc_extra_var_steering_gear_pump1_plc_serial_ip = $(sgs_pump_1_pod_openplc_eth0_ip)
-sgs_master_pod_openplc_extra_var_steering_gear_pump2_plc_serial_ip = $(sgs_pump_2_pod_openplc_eth0_ip)
-sgs_master_pod_openplc_extra_var_steering_gear_oil1_plc_serial_ip = $(sgs_oil_1_pod_openplc_eth0_ip)
-sgs_master_pod_openplc_extra_var_steering_gear_oil2_plc_serial_ip = $(sgs_oil_2_pod_openplc_eth0_ip)
-sgs_master_pod_openplc_extra_var_steering_gear_oil_tank_plc_serial_ip = $(sgs_oil_tank_pod_openplc_eth0_ip)

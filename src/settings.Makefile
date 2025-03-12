@@ -1,5 +1,5 @@
 # Scenario to instantiate
-SCENARIO_NAME := core_ins_demux
+SCENARIO_NAME := core_bridge_gui
 
 # Should BridgeCommand run in headless mode (1 to enable)
 BC_HEADLESS := 1

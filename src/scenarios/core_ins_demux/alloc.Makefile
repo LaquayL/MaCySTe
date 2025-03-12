@@ -40,4 +40,4 @@ sgs_oil_tank_pod_openplc_eth0_ip = 10.1.2.7
 sgs_pump_1_pod_openplc_eth0_ip = 10.1.2.3
 sgs_pump_2_pod_openplc_eth0_ip = 10.1.2.4
 steering_gear_physics_pod_steering_gear_physics_eth0_ip = 10.1.2.2
-steering_gear_physics_pod_steering_gear_physics_nats0_ip = 10.0.0.115
+steering_gear_physics_pod_steering_gear_physics_nats0_ip = 10.0.0.116

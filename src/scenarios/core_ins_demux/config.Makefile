@@ -7,5 +7,3 @@ MODULES += engine_sim_plc_l engine_sim_plc_r # Engine fictitious PLCs
 MODULES += engine_telegraph_l engine_telegraph_r # Engine telegraphs
 MODULES += steering_gear_physics sgs_pump_1 sgs_pump_2 sgs_oil_1 sgs_oil_2 sgs_oil_tank # SGS simulator
 MODULES += helm # Rudder actuator
-MODULES += gui_instruments # GUI for autopilot, helm and engine telegraphs
-MODULES += gui_home # GUI for MaCySTe (leave it near the end if you are leveraging the dynamic GUI functionality)

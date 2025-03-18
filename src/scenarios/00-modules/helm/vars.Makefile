@@ -3,6 +3,7 @@ helm_pod_modbus_nats_kv_client_extra_vars += \
 	modbus_host \
 	nats_bucket \
 	nats_key \
+	nats_url \
 	value_multiplier \
 	modbus_holding_register
 
@@ -12,3 +13,5 @@ helm_pod_modbus_nats_kv_client_extra_var_nats_bucket = ship_controls
 helm_pod_modbus_nats_kv_client_extra_var_nats_key = rudder
 helm_pod_modbus_nats_kv_client_extra_var_value_multiplier = 35
 helm_pod_modbus_nats_kv_client_extra_var_modbus_holding_register = 1130
+
+helm_pod_modbus_nats_kv_client_extra_var_nats_url ?= nats://$(nats_pod_nats_eth0_ip):4222

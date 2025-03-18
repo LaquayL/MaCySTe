@@ -71,6 +71,9 @@ $(foreach module,$(MODULES), \
 # Find all modules in 00-modules that have a config.Makefile (excluding nets_* folders)
 MODULES_TO_CONFIG := $(shell find ./scenarios/00-modules -mindepth 1 -maxdepth 1 -type d ! -name 'nets_*' -exec test -f {}/config.Makefile \; -print | xargs -n1 basename)
 
+# Print images (for debugging)
+$(info MODULES to be built: $(MODULES_TO_CONFIG))
+
 # Extract pods from each module's config.Makefile
 PODS := $(shell \
   for module in $(MODULES_TO_CONFIG); do \
@@ -78,8 +81,14 @@ PODS := $(shell \
   done | sort -u \
 )
 
+# Print images (for debugging)
+$(info PODS to be built: $(PODS))
+
 # Find YAML files for the extracted pods
 POD_YAML_FILES := $(foreach pod, $(PODS), $(PODS_DIR)/$(pod)/pod.yaml)
+
+# Print images (for debugging)
+$(info YAML to be built: $(YAML))
 
 # Extract image names from the YAML files
 CONTAINERS := $(shell \

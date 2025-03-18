@@ -68,9 +68,12 @@ $(foreach module,$(MODULES), \
 	) \
 )
 
+# Find all modules in 00-modules that have a config.Makefile (excluding nets_* folders)
+MODULES_TO_CONFIG := $(shell find ./scenarios/00-modules -mindepth 1 -maxdepth 1 -type d ! -name 'nets_*' -exec test -f {}/config.Makefile \; -print | xargs -n1 basename)
+
 # Extract pods from each module's config.Makefile
 PODS := $(shell \
-  for module in $(MODULES); do \
+  for module in $(MODULES_TO_CONFIG); do \
     awk '/^[a-zA-Z0-9_-]+_pods \+= / {for(i=3; i<=NF; i++) print $$i}' $(SCENARIO_DIR)/$$module/config.Makefile; \
   done | sort -u \
 )

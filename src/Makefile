@@ -71,9 +71,6 @@ $(foreach module,$(MODULES), \
 # Find all modules in 00-modules that have a config.Makefile (excluding nets_* folders)
 MODULES_TO_CONFIG := $(filter-out nets_%,$(MODULES))
 
-# Print images (for debugging)
-$(info MODULES to be built: $(MODULES_TO_CONFIG))
-
 # Extract pods from each module's config.Makefile
 PODS := $(shell \
   for module in $(MODULES_TO_CONFIG); do \
@@ -81,20 +78,12 @@ PODS := $(shell \
   done | sort -u \
 )
 
-# Print images (for debugging)
-$(info PODS to be built: $(PODS))
-
 # Find YAML files for the extracted pods
 POD_YAML_FILES := $(foreach pod, $(PODS), $(PODS_DIR)/$(pod)/pod.yaml)
 
-# Print images (for debugging)
-$(info YAML to be built: $(POD_YAML_FILES))
 
 # Extract image names from the YAML files
 CONTAINERS := $(shell grep -hoP "\K[a-zA-Z0-9_-]*(?=_image)" $(POD_YAML_FILES) 2>/dev/null | sort -u)
-
-# Print images (for debugging)
-$(info Images to be built: $(CONTAINERS))
 
 #
 # Aggregates

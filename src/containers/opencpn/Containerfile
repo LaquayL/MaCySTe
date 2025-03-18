@@ -62,6 +62,9 @@ RUN cmake .. \
   && make -j$(nproc) \
   && make install
 
+# cmake generates the necessary build files (e.g., Makefiles) for OpenCPN
+#-j$(nproc): Uses all available CPU cores to speed up the compilation.
+
 RUN opencpn-cmd update-catalog && \
     opencpn-cmd install-plugin Radar
 

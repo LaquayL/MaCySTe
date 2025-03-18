@@ -1,5 +1,4 @@
-ARG RUST_IMAGE
-FROM ${RUST_IMAGE}
+FROM docker.io/library/rust:latest
 
 COPY . /usr/src/udp-to-websocket
 

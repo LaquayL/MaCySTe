@@ -101,7 +101,7 @@ up:
 	@sudo sysctl vm.max_map_count=262144
 # Deploy
 	$(MAKE) up-nets
-	$(MAKE) allocate-scenario-ips
+#$(MAKE) allocate-scenario-ips
 	$(MAKE) up-scenario
 
 down:
@@ -224,7 +224,7 @@ down-dummy:
 	sudo ip link del dev dummy0 || true
 
 .PHONY: up-net-% down-net-%
-up-net-%: up-dummy
+up-net-%:
 	$(eval NAME := $(subst up-net-,,$@))
 	$(if $($(NAME)_NET_NAME),,$(error network $(NAME) has no name))
 	$(if $($(NAME)_NET_CIDR),,$(error network $(NAME) has no cidr))
@@ -237,7 +237,7 @@ up-net-%: up-dummy
 		--subnet $($(NAME)_NET_CIDR) \
 		$($(NAME)_NET_NAME)
 
-down-net-%: down-dummy
+down-net-%:
 	$(eval NAME := $(subst down-net-,,$@))
 	$(if $($(NAME)_NET_NAME),,$(error network $(NAME) has no name))
 	$(PODMAN) network rm -f $($(NAME)_NET_NAME) || true

@@ -44,10 +44,13 @@ PODS_DIR         := $(CURDIR)/pods
 SCENARIO_DIR 	 := $(CURDIR)/scenarios/00-modules
 ALLOCATIONS_FILE := $(CURDIR)/scenarios/$(SCENARIO_NAME)/alloc.Makefile
 
-# Load modules list
+# Get the list of available scenarios (excluding 00-modules)
+AVAILABLE_SCENARIOS := $(shell find ./scenarios -mindepth 1 -maxdepth 1 -type d ! -name '00-modules' -printf '%f\n' | sort)
+
+# Ensure SCENARIO_NAME is set, otherwise print an error with available scenarios
 ifndef SCENARIO_NAME
-$(error Please specify SCENARIO_NAME, e.g., make build SCENARIO_NAME=<your_scenario>)
-else
+$(error Please specify SCENARIO_NAME, e.g., make build SCENARIO_NAME=<your_scenario>. Available scenarios: $(AVAILABLE_SCENARIOS))
+else # Load modules list
 $(eval $(file < $(CURDIR)/scenarios/$(SCENARIO_NAME)/config.Makefile))
 endif
 $(if $(MODULES),,$(error Scenario $(SCENARIO_NAME) does not define any module, aborting))

@@ -42,7 +42,7 @@ CONFIG_DIR       := $(CURDIR)/configs
 STATE_DIR        := $(CURDIR)/state
 PODS_DIR         := $(CURDIR)/pods
 SCENARIO_DIR 	 := $(CURDIR)/scenarios/00-modules
-ALLOCATIONS_FILE := $(CURDIR)/scenarios/$(SCENARIO_NAME)/alloc.Makefile
+ALLOCATIONS_FILE := $(CURDIR)/alloc.Makefile
 
 # Get the list of available scenarios (excluding 00-modules)
 AVAILABLE_SCENARIOS := $(shell find ./scenarios -mindepth 1 -maxdepth 1 -type d ! -name '00-modules' -printf '%f\n' | sort)

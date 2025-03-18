@@ -92,7 +92,7 @@ $(info YAML to be built: $(POD_YAML_FILES))
 
 # Extract image names from the YAML files
 CONTAINERS := $(shell \
-  grep -hoP 'image: \$\{\K[a-zA-Z0-9_-]+(?=_image)}' $(POD_YAML_FILES) 2>/dev/null | sort -u \
+grep -hoP "\K[a-zA-Z0-9_-]*(?=_image)" $(POD_YAML_FILES) 2>/dev/null | sort -u
 )
 
 # Print images (for debugging)

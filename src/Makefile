@@ -32,7 +32,7 @@ CONTAINER_IMAGE_LABELS += \
 CONTAINER_BUILD_ARGS += $(foreach label,$(sort $(CONTAINER_IMAGE_LABELS)),--label=$(label))
 
 # Available containers
-CONTAINERS = $(sort $(notdir $(realpath $(dir $(wildcard ./containers/*/Containerfile)))))
+#CONTAINERS = $(sort $(notdir $(realpath $(dir $(wildcard ./containers/*/Containerfile)))))
 
 # Available flatpaks
 FLATPAKS = $(sort $(notdir $(realpath $(dir $(wildcard ./flatpaks/*/Makefile)))))
@@ -46,7 +46,7 @@ ALLOCATIONS_FILE := $(CURDIR)/scenarios/$(SCENARIO_NAME)/alloc.Makefile
 
 # Load modules list
 ifndef SCENARIO_NAME
-$(error SCENARIO_NAME is not defined)
+$(error Please specify SCENARIO_NAME, e.g., make build SCENARIO_NAME=<your_scenario>)
 else
 $(eval $(file < $(CURDIR)/scenarios/$(SCENARIO_NAME)/config.Makefile))
 endif
@@ -63,6 +63,21 @@ $(foreach module,$(MODULES), \
 	$(foreach pod,$($(module)_pods), \
 		$(eval $(file < $(PODS_DIR)/$(pod)/config.Makefile)) \
 	) \
+)
+
+# Extract pods from each module's config.Makefile
+PODS := $(shell \
+  for module in $(MODULES); do \
+    awk '/^[a-zA-Z0-9_-]+_pods \+= / {for(i=3; i<=NF; i++) print $$i}' $(SCENARIO_DIR)/$$module/config.Makefile; \
+  done | sort -u \
+)
+
+# Find YAML files for the extracted pods
+POD_YAML_FILES := $(foreach pod, $(PODS), $(PODS_DIR)/$(pod)/pod.yaml)
+
+# Extract image names from the YAML files
+CONTAINERS := $(shell \
+  grep -hoP 'image: \$\{\K[a-zA-Z0-9_-]+(?=_image)}' $(POD_YAML_FILES) 2>/dev/null | sort -u \
 )
 
 #

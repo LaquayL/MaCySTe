@@ -32,7 +32,7 @@ CONTAINER_IMAGE_LABELS += \
 CONTAINER_BUILD_ARGS += $(foreach label,$(sort $(CONTAINER_IMAGE_LABELS)),--label=$(label))
 
 # Available containers
-#CONTAINERS = $(sort $(notdir $(realpath $(dir $(wildcard ./containers/*/Containerfile)))))
+CONTAINERS_TO_BUILD = $(sort $(notdir $(realpath $(dir $(wildcard ./containers/*/Containerfile)))))
 
 # Available flatpaks
 FLATPAKS = $(sort $(notdir $(realpath $(dir $(wildcard ./flatpaks/*/Makefile)))))
@@ -83,7 +83,9 @@ POD_YAML_FILES := $(foreach pod, $(PODS), $(PODS_DIR)/$(pod)/pod.yaml)
 
 
 # Extract image names from the YAML files
-CONTAINERS := $(shell grep -hoP "\K[a-zA-Z0-9_-]*(?=_image)" $(POD_YAML_FILES) 2>/dev/null | sort -u)
+IMAGES := $(shell grep -hoP "\K[a-zA-Z0-9_-]*(?=_image)" $(POD_YAML_FILES) 2>/dev/null | sort -u)
+
+CONTAINERS = $(filter $(CONTAINERS_TO_BUILD),$(IMAGES))
 
 #
 # Aggregates

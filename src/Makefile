@@ -86,6 +86,9 @@ CONTAINERS := $(shell \
   grep -hoP 'image: \$\{\K[a-zA-Z0-9_-]+(?=_image)}' $(POD_YAML_FILES) 2>/dev/null | sort -u \
 )
 
+# Print images (for debugging)
+$(info Images to be built: $(CONTAINERS))
+
 #
 # Aggregates
 #

@@ -91,9 +91,7 @@ POD_YAML_FILES := $(foreach pod, $(PODS), $(PODS_DIR)/$(pod)/pod.yaml)
 $(info YAML to be built: $(POD_YAML_FILES))
 
 # Extract image names from the YAML files
-CONTAINERS := $(shell \
-grep -hoP "\K[a-zA-Z0-9_-]*(?=_image)" $(POD_YAML_FILES) 2>/dev/null | sort -u
-)
+CONTAINERS := $(shell grep -hoP "\K[a-zA-Z0-9_-]*(?=_image)" $(POD_YAML_FILES) 2>/dev/null | sort -u)
 
 # Print images (for debugging)
 $(info Images to be built: $(CONTAINERS))

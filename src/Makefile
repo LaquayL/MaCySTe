@@ -32,7 +32,7 @@ CONTAINER_IMAGE_LABELS += \
 CONTAINER_BUILD_ARGS += $(foreach label,$(sort $(CONTAINER_IMAGE_LABELS)),--label=$(label))
 
 # Available containers
-#CONTAINERS = $(sort $(notdir $(realpath $(dir $(wildcard ./containers/*/Containerfile)))))
+CONTAINERS_TO_BUILD = $(sort $(notdir $(realpath $(dir $(wildcard ./containers/*/Containerfile)))))
 
 # Available flatpaks
 FLATPAKS = $(sort $(notdir $(realpath $(dir $(wildcard ./flatpaks/*/Makefile)))))
@@ -68,9 +68,12 @@ $(foreach module,$(MODULES), \
 	) \
 )
 
+# Find all modules in 00-modules that have a config.Makefile (excluding nets_* folders)
+MODULES_TO_CONFIG := $(filter-out nets_%,$(MODULES))
+
 # Extract pods from each module's config.Makefile
 PODS := $(shell \
-  for module in $(MODULES); do \
+  for module in $(MODULES_TO_CONFIG); do \
     awk '/^[a-zA-Z0-9_-]+_pods \+= / {for(i=3; i<=NF; i++) print $$i}' $(SCENARIO_DIR)/$$module/config.Makefile; \
   done | sort -u \
 )
@@ -78,10 +81,11 @@ PODS := $(shell \
 # Find YAML files for the extracted pods
 POD_YAML_FILES := $(foreach pod, $(PODS), $(PODS_DIR)/$(pod)/pod.yaml)
 
+
 # Extract image names from the YAML files
-CONTAINERS := $(shell \
-  grep -hoP 'image: \$\{\K[a-zA-Z0-9_-]+(?=_image)}' $(POD_YAML_FILES) 2>/dev/null | sort -u \
-)
+IMAGES := $(shell grep -hoP "\K[a-zA-Z0-9_-]*(?=_image)" $(POD_YAML_FILES) 2>/dev/null | sort -u)
+
+CONTAINERS = $(filter $(CONTAINERS_TO_BUILD),$(IMAGES))
 
 #
 # Aggregates

@@ -14,6 +14,7 @@ gui_instruments_pod_gui_instruments_eth0_ip = 192.168.2.201
 helm_pod_modbus_nats_kv_client_eth0_ip = 192.168.2.7
 helm_pod_modbus_nats_kv_client_nats0_ip = 10.1.1.7
 nats_pod_nats_eth0_ip = 10.1.1.1
+nats_pod_nats_mgmt0_ip = 192.168.249.1
 ppi_asterix_pod_gui_asterix_eth0_ip = 192.168.1.1
 ppi_navico_pod_opencpn_eth0_ip = 192.168.1.2
 radar_converter_asterix_pod_radar_converter_eth0_ip = 192.168.1.3

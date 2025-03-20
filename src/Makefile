@@ -143,6 +143,7 @@ build: build-containers build-flatpaks
 run-bc:
 	$(eval $(file < $(ALLOCATIONS_FILE)))
 	$(eval $(file < $(SCENARIO_DIR)/nats/vars.Makefile))
+	$(info Running BridgeCommand with NATS URL $(nats_management_url) and scenario $(BC_SCENARIO))
 	$(MAKE) -C flatpaks/bridgecommand run nats_url=$(nats_management_url) bc_scenario=$(BC_SCENARIO) bc_headless=$(BC_HEADLESS)
 
 open-home:

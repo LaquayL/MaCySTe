@@ -42,7 +42,7 @@ CONFIG_DIR       := $(CURDIR)/configs
 STATE_DIR        := $(CURDIR)/state
 PODS_DIR         := $(CURDIR)/pods
 SCENARIO_DIR 	 := $(CURDIR)/scenarios/00-modules
-ALLOCATIONS_FILE := $(CURDIR)/alloc.Makefile
+ALLOCATIONS_FILE := $(CURDIR)/scenarios/$(SCENARIO_NAME)/alloc.Makefile
 
 # Get the list of available scenarios (excluding 00-modules)
 AVAILABLE_SCENARIOS := $(shell find ./scenarios -mindepth 1 -maxdepth 1 -type d ! -name '00-modules' -printf '%f\n' | sort)
@@ -143,7 +143,6 @@ build: build-containers build-flatpaks
 run-bc:
 	$(eval $(file < $(ALLOCATIONS_FILE)))
 	$(eval $(file < $(SCENARIO_DIR)/nats/vars.Makefile))
-	$(info Running BridgeCommand with NATS URL $(nats_management_url) and scenario $(BC_SCENARIO))
 	$(MAKE) -C flatpaks/bridgecommand run nats_url=$(nats_management_url) bc_scenario=$(BC_SCENARIO) bc_headless=$(BC_HEADLESS)
 
 open-home:

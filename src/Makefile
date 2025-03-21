@@ -290,7 +290,8 @@ allocate-scenario-ip-% up-scenario-% down-scenario-%:
 			$(eval NETWORK_NAME := $($(NAME)_pod_$(pod)_$(if)_network)) \
 			$(eval NETWORK_PODMAN_NAME := $($(NETWORK_NAME)_NET_NAME)) \
 			$(eval NETWORK_CIDR := $($(NETWORK_NAME)_NET_CIDR)) \
-			$(eval NETWORK_IP := $(shell echo '$(ALLOCATIONS_FILE) $(NETWORK_CIDR) $(NAME)_pod_$(pod)_$(if)_ip' | python3 scripts/allocate_ip.py)) \
+			$(eval $(file < $(ALLOCATIONS_FILE))) \
+			$(eval NETWORK_IP := $($(NAME)_pod_$(pod)_$(if)_ip)) \
 			$(eval $(NAME)_pod_$(pod)_network_args += --network=$(NETWORK_PODMAN_NAME):ip=$(NETWORK_IP),interface_name=$(if)) \
 			$(info Module $(NAME) pod $(pod) if $(if) has ip $(NETWORK_IP)) \
 		) \

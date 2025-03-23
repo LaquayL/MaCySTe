@@ -1,5 +1,5 @@
 # !!! 192.168.249.1 probably used by Bridge Command
-# If sgs_master_ip0 modified, also need to change it inside fuxa conf file !!!
+# If sgs master modified, also need to change it inside fuxa conf file !!!
 autopilot_pod_autopilot_eth0_ip = 192.168.1.1
 autopilot_pod_autopilot_nats0_ip = 10.1.1.2
 ecdis_opencpn_pod_opencpn_eth0_ip = 192.168.1.2

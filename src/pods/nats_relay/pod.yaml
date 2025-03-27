@@ -11,9 +11,9 @@ spec:
   containers:
     - name: nats-relay
       image: docker.io/library/nats:2.9.18
-      command: ["/bin/sh", "-c"]
       args:
-        - envsubst < /etc/nats-relay.conf > /tmp/nats-relay.conf && exec nats-server --config /tmp/nats-relay.conf
+      - --config
+      - /etc/nats-relay.conf
       env:
       - { name: NATS_POD_IP, value: "${nats_pod_host}" }
       volumeMounts:

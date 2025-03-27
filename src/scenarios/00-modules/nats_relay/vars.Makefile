@@ -1,5 +1,5 @@
 nats_relay_pod_nats_relay_extra_vars += \
-	nats_config_file \
+	nats_relay_config_file \
 	nats_pod_host
 
 nats_relay_pod_nats_relay_extra_var_nats_relay_config_file = $(CONFIG_DIR)/nats/nats-relay.conf

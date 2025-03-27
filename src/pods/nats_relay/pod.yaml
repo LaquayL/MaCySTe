@@ -8,6 +8,10 @@ spec:
       hostPath:
         path: ${nats_relay_config_file}
         type: File
+    - name: jetstream
+      hostPath:
+        path: ${nats_relay_js_store_dir}
+        type: DirectoryOrCreate
   containers:
     - name: nats-relay
       image: docker.io/library/nats:2.9.18
@@ -18,3 +22,4 @@ spec:
       - { name: NATS_POD_IP, value: "${nats_pod_host}" }
       volumeMounts:
       - { name: relay-config, mountPath: /etc/nats-relay.conf, readOnly: true }
+      - { name: jetstream, mountPath: /var/lib/nats }

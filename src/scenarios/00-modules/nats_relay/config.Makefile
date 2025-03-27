@@ -1,4 +1,4 @@
-nats_relay_pods += nats-relay
+nats_relay_pods += nats_relay
 
 nats_relay_pod_nats_relay_network_interfaces += eth0 nats0
 nats_relay_pod_nats_relay_nats0_network = NATS

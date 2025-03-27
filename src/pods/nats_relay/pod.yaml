@@ -17,4 +17,4 @@ spec:
       env:
       - { name: NATS_POD_IP, value: "${nats_pod_host}" }
       volumeMounts:
-      - { name: config, mountPath: /etc/nats-relay.conf, readOnly: true }
+      - { name: relay-config, mountPath: /etc/nats-relay.conf, readOnly: true }

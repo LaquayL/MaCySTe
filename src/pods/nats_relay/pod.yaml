@@ -10,7 +10,7 @@ spec:
         type: File
   containers:
     - name: nats-relay
-      image: ${nats_image}
+      image: docker.io/library/nats:2.9.18
       args:
       - --config
       - /etc/nats-relay.conf

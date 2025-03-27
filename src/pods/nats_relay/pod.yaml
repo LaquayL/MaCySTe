@@ -14,9 +14,6 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - envsubst < /etc/nats-relay.conf > /tmp/nats-relay.conf && exec nats-server --config /tmp/nats-relay.conf
-      args:
-      - --config
-      - /etc/nats-relay.conf
       env:
       - { name: NATS_POD_IP, value: "${nats_pod_host}" }
       volumeMounts:

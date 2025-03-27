@@ -7,4 +7,4 @@ spec:
     - name: gui-instruments
       image: ${gui_instruments_image}
       env:
-      - { name: NATS_URL, value: ${nats_ws_url} }
+      - { name: NATS_URL, value: ${nats_relay_ws_url} }

@@ -10,6 +10,8 @@ spec:
       - { name: NATS_URL, value: "${nats_url}" }
       - { name: NMEA_HOST, value: "${nmea_host}" }
       - { name: NMEA_PORT, value: "${nmea_port}" }
+      - { name: NMEA_TCP_LISTENER_HOST, value: "${autopilot_nmea_tcp_host}" }
+      - { name: NMEA_TCP_LISTENER_PORT, value: "${autopilot_nmea_tcp_port}" }
       - { name: RUDDER_PLC_HOST, value: "${rudder_plc_host}" }
       - { name: RUDDER_PLC_PORT, value: "${rudder_plc_port}" }
       - { name: RUDDER_PLC_ADDR, value: "${rudder_plc_addr}" }

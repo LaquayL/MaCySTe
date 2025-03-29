@@ -4,6 +4,7 @@
 # If nats relay eth0 modified, also need to change it inside gui_instruments default config file !!!
 autopilot_pod_autopilot_eth0_ip = 192.168.1.1
 autopilot_pod_autopilot_nats0_ip = 10.1.1.2
+autopilot_forwarder_pod_autopilot_forwarder_eth0_ip = 192.168.3.11
 ecdis_opencpn_pod_opencpn_eth0_ip = 192.168.3.1
 ecdis_opencpn_pod_opencpn_mgmt0_ip = 192.168.249.3
 engine_sim_plc_l_pod_modbus_nats_kv_server_eth0_ip = 192.168.1.2

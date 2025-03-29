@@ -1,6 +1,6 @@
 const DefaultConfig = {
   // NATS
-  natsURL: 'ws://192.168.3.9:4322',
+  natsURL: 'ws://192.168.3.9',
 
   // Autopilot
   natsAutopilotBucket: 'autopilot',

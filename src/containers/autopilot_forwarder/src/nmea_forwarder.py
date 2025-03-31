@@ -15,7 +15,7 @@ async def forward_nmea():
     sock.bind(("", MULTICAST_PORT))
     mreq = socket.inet_aton(MULTICAST_GROUP) + socket.inet_aton("0.0.0.0")
     sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
-
+    print(f"Opening TCP connection to autopilot at {AUTOPILOT_TCP_HOST}:{AUTOPILOT_TCP_PORT}")
     reader, writer = await asyncio.open_connection(AUTOPILOT_TCP_HOST, AUTOPILOT_TCP_PORT)
     print(f"Forwarding NMEA to {AUTOPILOT_TCP_HOST}:{AUTOPILOT_TCP_PORT}")
 

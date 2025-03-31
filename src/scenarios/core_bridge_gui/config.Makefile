@@ -3,5 +3,4 @@
 MODULES += nets_base_bridge_gui # Basic networking
 MODULES += ecdis_opencpn # ECDIS (OpenCPN)
 MODULES += autopilot_forwarder # forward autopilot messages from opencpn to autopilot
-MODULES += gui_instruments
 MODULES += gui_home # GUI for MaCySTe (leave it near the end if you are leveraging the dynamic GUI functionality)

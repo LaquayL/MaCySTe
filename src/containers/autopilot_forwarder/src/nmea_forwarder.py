@@ -4,8 +4,8 @@ import os
 
 MULTICAST_GROUP = os.getenv("NMEA_MULTICAST_GROUP", "239.0.1.1")
 MULTICAST_PORT = int(os.getenv("NMEA_MULTICAST_PORT", 10110))
-AUTOPILOT_TCP_HOST = os.getenv("AUTOPILOT_TCP_HOST", "autopilot-container")
-AUTOPILOT_TCP_PORT = int(os.getenv("AUTOPILOT_TCP_PORT", 5000))
+AUTOPILOT_TCP_HOST = os.getenv("NMEA_TCP_LISTENER_HOST", "autopilot-container")
+AUTOPILOT_TCP_PORT = int(os.getenv("NMEA_TCP_LISTENER_PORT", 5000))
 
 async def forward_nmea():
     print(f"Listening for multicast NMEA on {MULTICAST_GROUP}:{MULTICAST_PORT}")

@@ -51,15 +51,19 @@ async def client():
     nats_kv = None
     try:
       nats_kv = await nats_js.key_value(bucket = nats_bucket)
+      logger.debug('NATS KV %s', nats_kv)
     except nats.js.errors.BucketNotFoundError:
       nats_kv = await nats_js.create_key_value(bucket = nats_bucket)
+      logger.debug('NATS KV %s created', nats_kv)
     watcher = await nats_kv.watch(nats_key)
     while True:
       try:
         e = await watcher.updates(timeout = 10)
         if e is None:
+          logger.debug('No nats updates')
           continue
         value = float(e.value)
+        logger.debug('nats value %s received', value)
         value_changed = True
       except TimeoutError:
         logger.getChild(watch_nats_kv.__name__).debug('No updates')

@@ -4,7 +4,7 @@ import os
 
 MULTICAST_GROUP = os.getenv("NMEA_MULTICAST_GROUP", "239.0.1.1")
 MULTICAST_PORT = int(os.getenv("NMEA_MULTICAST_PORT", 10110))
-AUTOPILOT_TCP_HOST = os.getenv("NMEA_TCP_LISTENER_HOST", "autopilot-container")
+AUTOPILOT_TCP_HOST = os.getenv("NMEA_TCP_LISTENER_HOST", "192.168.1.1")
 AUTOPILOT_TCP_PORT = int(os.getenv("NMEA_TCP_LISTENER_PORT", 5000))
 
 async def forward_nmea():

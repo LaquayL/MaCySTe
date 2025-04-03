@@ -14,7 +14,7 @@ spec:
         type: DirectoryOrCreate
   containers:
     - name: nats-relay
-      image: docker.io/library/nats:2.9.18
+      image: $(nats_image) #docker.io/library/nats:2.9.18
       args:
       - --config
       - /etc/nats-relay.conf

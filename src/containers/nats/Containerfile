@@ -1,4 +1,4 @@
-FROM nats:latest
+FROM docker.io/library/nats:2.9.18
 
 # Install bash and NATS CLI
 RUN apt-get update && apt-get install -y bash curl \

@@ -1,0 +1,11 @@
+FROM nats:latest
+
+# Install bash and NATS CLI
+RUN apt-get update && apt-get install -y bash curl \
+    && curl -L https://github.com/nats-io/natscli/releases/latest/download/nats-$(uname -s)-$(uname -m).zip -o /tmp/natscli.zip \
+    && unzip /tmp/natscli.zip -d /usr/local/bin/ \
+    && rm /tmp/natscli.zip \
+    && apt-get clean
+
+# Set bash as default shell
+CMD ["/bin/bash"]

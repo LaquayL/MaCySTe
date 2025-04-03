@@ -1,23 +1,22 @@
+# Use Debian as base
 FROM debian:latest
 
 # Install dependencies
-RUN apt-get update && apt-get install -y bash curl unzip 
+RUN apt-get update && apt-get install -y bash curl unzip
 
 # Install NATS server
-RUN curl -L https://github.com/nats-io/nats-server/releases/latest/download/nats-server-$(uname -s)-$(uname -m).zip -o /tmp/nats-server.zip \
-    && unzip /tmp/nats-server.zip -d /usr/local/bin/ \
-    && rm /tmp/nats-server.zip
+RUN curl -L https://github.com/nats-io/nats-server/releases/latest/download/nats-server -o /usr/local/bin/nats-server \
+    && chmod +x /usr/local/bin/nats-server
 
 # Install NATS CLI
-RUN curl -L https://github.com/nats-io/natscli/releases/latest/download/nats-$(uname -s)-$(uname -m).zip -o /tmp/natscli.zip \
-    && unzip /tmp/natscli.zip -d /usr/local/bin/ \
-    && rm /tmp/natscli.zip
+RUN curl -L https://github.com/nats-io/natscli/releases/latest/download/nats -o /usr/local/bin/nats \
+    && chmod +x /usr/local/bin/nats
 
 # Set working directory
 WORKDIR /var/lib/nats
 
-# Expose necessary ports
+# Expose ports
 EXPOSE 4222 6222 8222
 
-# Set bash as default shell
+# Default command
 CMD ["/bin/bash"]

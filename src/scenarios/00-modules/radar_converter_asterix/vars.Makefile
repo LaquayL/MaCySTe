@@ -18,4 +18,4 @@ radar_converter_asterix_pod_radar_converter_extra_var_asterix_port = $(asterix_m
 radar_converter_asterix_pod_radar_converter_extra_var_image_multicast_if = $(radar_converter_asterix_pod_radar_converter_eth0_ip)
 
 
-radar_converter_asterix_pod_radar_converter_extra_var_nats_url ?= nats://$(nats_pod_nats_eth0_ip):4222
+radar_converter_asterix_pod_radar_converter_extra_var_nats_url = nats://$(nats_pod_nats_eth0_ip):4222

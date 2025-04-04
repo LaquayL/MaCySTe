@@ -29,26 +29,21 @@ async def handle_client(reader, writer):
                         except pynmea2.ParseError as e:
                             print(f"Failed to parse split sentence: {part.strip()} -- Reason: {e}")
                             pass
-                else:
-                    print(f"Failed to parse malformed sentence: {nmea_sentence}")
-                    pass
 
-                if isinstance(sentence, APB):
-                    AUTOPILOT_STATE.track_control_xte = float(sentence.cross_track_err_mag)
-                    AUTOPILOT_STATE.track_control_xte_direction_to_steer = sentence.dir_steer
-                    AUTOPILOT_STATE.track_control_set_heading = float(sentence.heading_to_dest)
-                elif isinstance(sentence, HDT):
-                    AUTOPILOT_STATE.heading = float(sentence.heading)
-                elif isinstance(sentence, VTG):
-                    if sentence.spd_over_grnd_kts is not None:
-                        AUTOPILOT_STATE.speed = float(sentence.spd_over_grnd_kts)
-                elif isinstance(sentence, XTE):
-                    AUTOPILOT_STATE.track_control_xte = float(sentence.cross_track_err_dist)
-                    AUTOPILOT_STATE.track_control_xte_direction_to_steer = sentence.correction_dir
-                else:
-                    logger.debug(f"Ignored {sentence}")
-            except ValueError:
-                logger.exception("Failed parsing NMEA")
+            if isinstance(sentence, APB):
+                AUTOPILOT_STATE.track_control_xte = float(sentence.cross_track_err_mag)
+                AUTOPILOT_STATE.track_control_xte_direction_to_steer = sentence.dir_steer
+                AUTOPILOT_STATE.track_control_set_heading = float(sentence.heading_to_dest)
+            elif isinstance(sentence, HDT):
+                AUTOPILOT_STATE.heading = float(sentence.heading)
+            elif isinstance(sentence, VTG):
+                if sentence.spd_over_grnd_kts is not None:
+                    AUTOPILOT_STATE.speed = float(sentence.spd_over_grnd_kts)
+            elif isinstance(sentence, XTE):
+                AUTOPILOT_STATE.track_control_xte = float(sentence.cross_track_err_dist)
+                AUTOPILOT_STATE.track_control_xte_direction_to_steer = sentence.correction_dir
+            else:
+                logger.debug(f"Ignored {sentence}")
         except Exception as e:
             logger.error(f"Error reading data: {e}")
             break

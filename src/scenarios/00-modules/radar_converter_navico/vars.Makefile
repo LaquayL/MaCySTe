@@ -12,4 +12,4 @@ radar_converter_navico_pod_radar_converter_extra_var_bind_interface = $(radar_co
 radar_converter_navico_pod_radar_converter_extra_var_protocol = NAVICO
 radar_converter_navico_pod_radar_converter_extra_var_image_multicast_if = $(radar_converter_navico_pod_radar_converter_eth0_ip)
 
-radar_converter_navico_pod_radar_converter_extra_var_nats_url ?= nats://$(nats_pod_nats_eth0_ip):4222
+radar_converter_navico_pod_radar_converter_extra_var_nats_url = nats://$(nats_pod_nats_eth0_ip):4222

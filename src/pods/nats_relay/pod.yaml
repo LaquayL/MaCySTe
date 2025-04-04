@@ -15,7 +15,7 @@ spec:
   containers:
     - name: nats-relay
       image: macyste_nats #docker.io/library/nats:2.9.18
-      command: ["/usr/local/bin/nats-server"]  # Explicitly run nats-server
+      command: ["nats-server"]  # Explicitly run nats-server
       args: ["--config", "/etc/nats-relay.conf"]  # Pass the config file argument
       # args:
       # - --config

@@ -17,6 +17,22 @@ async def handle_client(reader, writer):
             logger.info(f"Received NMEA: {nmea_sentence}")
             try:
                 sentence = pynmea2.parse(nmea_sentence, check=False)
+            except pynmea2.ParseError:
+                # Attempt to split and parse multiple sentences if the direct parse fails
+                if "$" in nmea_sentence:
+                    parts = [f"${s}" for s in nmea_sentence.split("$") if s]
+                    for part in parts:
+                        try:
+                            sentence = pynmea2.parse(part.strip(), check=False)
+                            # If successful, you may process the sentence here
+                            print(f"Successfully parsed: {sentence}")
+                        except pynmea2.ParseError as e:
+                            print(f"Failed to parse split sentence: {part.strip()} -- Reason: {e}")
+                            pass
+                else:
+                    print(f"Failed to parse malformed sentence: {nmea_sentence}")
+                    pass
+
                 if isinstance(sentence, APB):
                     AUTOPILOT_STATE.track_control_xte = float(sentence.cross_track_err_mag)
                     AUTOPILOT_STATE.track_control_xte_direction_to_steer = sentence.dir_steer

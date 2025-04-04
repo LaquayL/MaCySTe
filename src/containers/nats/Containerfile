@@ -2,7 +2,7 @@
 FROM debian:latest
 
 # Install dependencies
-RUN apt-get update && apt-get install -y bash curl unzip
+RUN apt-get update && apt-get install -y bash curl unzip nats-server
 
 # Install NATS server
 RUN curl -L https://github.com/nats-io/nats-server/releases/latest/download/nats-server -o /usr/local/bin/nats-server \

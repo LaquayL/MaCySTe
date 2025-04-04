@@ -18,6 +18,7 @@ async def nats_publish(url, topic):
     for coro in asyncio.as_completed({ nc.publish(subject, value) for value, subject in values }):
         _ = await coro
     logger.debug(f'Published {len(values)} messages to message queue')
+    print(f'Published {len(values)} messages to message queue')
 
 class NatsExporter:
   url: str

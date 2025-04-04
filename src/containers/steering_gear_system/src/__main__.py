@@ -107,54 +107,55 @@ if __name__ == '__main__':
                 (str.encode(str(pump_switch[1])), (args.nats_topic + ".PUMP2"))
             ]
             nats_exporter.put_in_queue(nats_values)
+            print("Nats values: ", nats_values)
             
             i += 1.0
             if args.verbose and ((i*args.refresh)%5.0 == 0):
                 print('Modbus status:')
-                print('Expansion Tank = {}'.format(exp_tank_oil))
-                if low_level_exp_tank:
-                    print('ALARM: low level expansion tank - TANK DIVIDED')
-                    print('EXPANSION TANK PUMP 1 = {}'. format(exp_tank_oil1))
-                    print('EXPANSION TANK PUMP 2 = {}'.format(exp_tank_oil2))
+                # print('Expansion Tank = {}'.format(exp_tank_oil))
+                # if low_level_exp_tank:
+                #     print('ALARM: low level expansion tank - TANK DIVIDED')
+                #     print('EXPANSION TANK PUMP 1 = {}'. format(exp_tank_oil1))
+                #     print('EXPANSION TANK PUMP 2 = {}'.format(exp_tank_oil2))
 
                 print('Rudder position = {}° -- Desired position = {}°'.format(current_position,
                                                                                desired_rudder_position))
-                print('--------------')
-                print('Hydraulic System 1:')
-                if pressure_valve_open[0]:
-                    print('WARNING: pressure too high, valve open')
+                # print('--------------')
+                # print('Hydraulic System 1:')
+                # if pressure_valve_open[0]:
+                #     print('WARNING: pressure too high, valve open')
 
-                if oil_filter_high_pressure[0]:
-                    print('ALARM: high pressure in oil filter')
+                # if oil_filter_high_pressure[0]:
+                #     print('ALARM: high pressure in oil filter')
 
-                if high_temp_alarm[0]:
-                    print('ALARM: high oil temperature')
+                # if high_temp_alarm[0]:
+                #     print('ALARM: high oil temperature')
 
-                if low_level_oil[0]:
-                    print('ALARM: low oil level')
+                # if low_level_oil[0]:
+                #     print('ALARM: low oil level')
 
-                print('Pump: [rpm={}, lps={}, pressure={}, flow={}, temperature={}], [governor={}]'
-                      .format(rpm1, lps1, pressure1, flow1, temperature1, governor[0]))
-                print('Oil Tank: [level={} l]'.format(level1))
-                print('--------------')
-                print('Hydraulic System 2:')
-                if pressure_valve_open[1]:
-                    print('WARNING: pressure too high, valve open')
+                # print('Pump: [rpm={}, lps={}, pressure={}, flow={}, temperature={}], [governor={}]'
+                #       .format(rpm1, lps1, pressure1, flow1, temperature1, governor[0]))
+                # print('Oil Tank: [level={} l]'.format(level1))
+                # print('--------------')
+                # print('Hydraulic System 2:')
+                # if pressure_valve_open[1]:
+                #     print('WARNING: pressure too high, valve open')
 
-                if oil_filter_high_pressure[1]:
-                    print('ALARM: high pressure in oil filter')
+                # if oil_filter_high_pressure[1]:
+                #     print('ALARM: high pressure in oil filter')
 
-                if high_temp_alarm[1]:
-                    print('ALARM: high oil temperature')
+                # if high_temp_alarm[1]:
+                #     print('ALARM: high oil temperature')
 
-                if low_level_oil[1]:
-                    print('ALARM: low oil level')
-                print('Pump: [rpm={}, lps={}, pressure={}, flow={}, temperature={}], [governor={}]'
-                      .format(rpm2, lps2, pressure2, flow2, temperature2, governor[1]))
-                print('Oil Tank: [level={} l]'.format(level2))
-                print('--------------')
-                print('--------------')
-                print('--------------')
+                # if low_level_oil[1]:
+                #     print('ALARM: low oil level')
+                # print('Pump: [rpm={}, lps={}, pressure={}, flow={}, temperature={}], [governor={}]'
+                #       .format(rpm2, lps2, pressure2, flow2, temperature2, governor[1]))
+                # print('Oil Tank: [level={} l]'.format(level2))
+                # print('--------------')
+                # print('--------------')
+                # print('--------------')
 
             sys.stdout.flush()
             time.sleep(args.refresh)

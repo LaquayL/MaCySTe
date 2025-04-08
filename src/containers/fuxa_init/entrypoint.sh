@@ -2,7 +2,7 @@
 
 # Settings
 CONFIG_PATH=${CONFIG_PATH:-/etc/fuxa-project.json}
-FUXA_URL=${FUXA_URL:-http://127.0.0.1:1881}
+FUXA_URL=${FUXA_URL:-http://0.0.0.0:1881}
 
 # Wait until FUXA is alive
 printf 'Waiting until FUXA is alive...'

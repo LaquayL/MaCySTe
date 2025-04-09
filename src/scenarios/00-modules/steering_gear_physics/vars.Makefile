@@ -5,4 +5,4 @@ steering_gear_physics_pod_steering_gear_physics_extra_vars += \
 
 steering_gear_physics_pod_steering_gear_physics_extra_var_nats_topic = physics
 steering_gear_physics_pod_steering_gear_physics_extra_var_verbose = 1
-steering_gear_physics_pod_steering_gear_physics_extra_var_nats_url = nats://$(nats_pod_nats_eth0_ip):4222
+steering_gear_physics_pod_steering_gear_physics_extra_var_nats_url = nats://$(nats_relay_1_pod_nats_eth0_ip):4222

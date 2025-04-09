@@ -10,4 +10,4 @@ engine_telegraph_r_pod_modbus_nats_kv_client_extra_var_modbus_host = $(engine_si
 engine_telegraph_r_pod_modbus_nats_kv_client_extra_var_nats_bucket = ship_controls
 engine_telegraph_r_pod_modbus_nats_kv_client_extra_var_nats_key = r_engine
 
-engine_telegraph_r_pod_modbus_nats_kv_client_extra_var_nats_url ?= nats://$(nats_pod_nats_eth0_ip):4222
+engine_telegraph_r_pod_modbus_nats_kv_client_extra_var_nats_url = nats://$(nats_relay_1_pod_nats_eth0_ip):4222

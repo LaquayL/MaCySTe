@@ -14,4 +14,4 @@ helm_pod_modbus_nats_kv_client_extra_var_nats_key = rudder
 helm_pod_modbus_nats_kv_client_extra_var_value_multiplier = 35
 helm_pod_modbus_nats_kv_client_extra_var_modbus_holding_register = 1130
 
-helm_pod_modbus_nats_kv_client_extra_var_nats_url ?= nats://$(nats_pod_nats_eth0_ip):4222
+helm_pod_modbus_nats_kv_client_extra_var_nats_url = nats://$(nats_relay_1_pod_nats_eth0_ip):4222

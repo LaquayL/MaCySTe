@@ -15,6 +15,7 @@ async def handle_client(reader, writer):
                 break
             nmea_sentence = data.decode(errors="ignore").strip()
             logger.info(f"Received NMEA: {nmea_sentence}")
+            print(f"Received NMEA: {nmea_sentence}")
             try:
                 sentence = pynmea2.parse(nmea_sentence, check=False)
             except pynmea2.ParseError:
@@ -55,6 +56,7 @@ async def listen_nmea():
 
     server = await asyncio.start_server(handle_client, tcp_host, tcp_port)
     logger.info(f"Listening for NMEA TCP on {tcp_host}:{tcp_port}")
+    print(f"Listening for NMEA TCP on {tcp_host}:{tcp_port}")
 
     async with server:
         await server.serve_forever()

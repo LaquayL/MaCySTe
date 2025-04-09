@@ -32,4 +32,4 @@ autopilot_pod_autopilot_extra_var_telegraph_r_plc_host = $(engine_sim_plc_r_pod_
 autopilot_pod_autopilot_extra_var_telegraph_r_plc_port = 502
 autopilot_pod_autopilot_extra_var_telegraph_r_plc_addr = 0
 
-autopilot_pod_autopilot_extra_var_nats_url ?= nats://$(nats_pod_nats_eth0_ip):4222
+autopilot_pod_autopilot_extra_var_nats_url ?= nats://$(nats_relay_1_pod_nats_eth0_ip):4222

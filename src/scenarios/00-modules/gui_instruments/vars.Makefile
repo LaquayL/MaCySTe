@@ -4,4 +4,4 @@ gui_instruments_pod_gui_instruments_extra_vars += \
 
 gui_instruments_pod_gui_instruments_extra_var_nats_relay_ws_url = $(nats_relay_ws_url)
 
-nats_relay_ws_url ?= ws://$(nats_relay_pod_nats_relay_eth0_ip):80
+nats_relay_ws_url ?= ws://$(nats_relay_1_pod_nats_eth0_ip):80

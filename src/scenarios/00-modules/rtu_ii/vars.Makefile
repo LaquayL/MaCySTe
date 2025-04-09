@@ -10,4 +10,4 @@ rtu_ii_pod_nmea_demux_extra_var_demux_name = ii
 rtu_ii_pod_nmea_demux_extra_var_demux_sender = II
 rtu_ii_pod_nmea_demux_extra_var_demux_send_address = $(nmea_multicast_ip):$(nmea_multicast_port)
 
-rtu_ii_pod_nmea_demux_extra_var_nats_url ?= nats://$(nats_relay_pod_nats_relay_eth0_ip):4222
+rtu_ii_pod_nmea_demux_extra_var_nats_url ?= nats://$(nats_relay_2_pod_nats_eth0_ip):4222

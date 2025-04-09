@@ -1,8 +1,8 @@
 # 192.168.249.1 used by Bridge Command !!!
 # If sgs master modified, also need to change it inside fuxa conf file !!!
-# If nats eth0 modified, also need to change it inside nats relay conf file !!!
-# If nats relay nats0 modified, also need to change it inside nats conf file !!!
-# If nats relay eth0 modified, also need to change it inside gui_instruments default config file !!!
+# If nats eth0 modified, also need to change it inside nats relay 1 & 2 conf file !!!
+# If nats relay 1 / 2 nats0 modified, also need to change it inside nats conf file !!!
+# If nats relay 1 / 2 eth0 modified, also need to change it inside gui_instruments default config file !!!
 autopilot_pod_autopilot_eth0_ip = 192.168.1.101
 autopilot_pod_autopilot_nats0_ip = 10.1.1.102
 autopilot_forwarder_pod_autopilot_forwarder_eth0_ip = 192.168.3.101
@@ -23,8 +23,10 @@ helm_pod_modbus_nats_kv_client_eth0_ip = 192.168.1.107
 helm_pod_modbus_nats_kv_client_nats0_ip = 10.1.1.107
 nats_pod_nats_eth0_ip = 10.1.1.101
 nats_pod_nats_mgmt0_ip = 192.168.249.2
-nats_relay_pod_nats_relay_eth0_ip = 192.168.3.138
-nats_relay_pod_nats_relay_nats0_ip = 10.1.1.108
+nats_relay_1_pod_nats_eth0_ip = 192.168.1.108
+nats_relay_1_pod_nats_nats0_ip = 10.1.1.108
+nats_relay_2_pod_nats_eth0_ip = 192.168.1.117
+nats_relay_2_pod_nats_nats0_ip = 10.1.1.118
 ppi_asterix_pod_gui_asterix_eth0_ip = 192.168.3.103
 ppi_asterix_pod_gui_asterix_mgmt0_ip = 192.168.249.6
 ppi_navico_pod_opencpn_eth0_ip = 192.168.3.104
@@ -56,4 +58,4 @@ sgs_oil_tank_pod_openplc_eth0_ip = 192.168.1.113
 sgs_pump_1_pod_openplc_eth0_ip = 192.168.1.114
 sgs_pump_2_pod_openplc_eth0_ip = 192.168.1.115
 steering_gear_physics_pod_steering_gear_physics_eth0_ip = 192.168.1.116
-steering_gear_physics_pod_steering_gear_physics_nats0_ip = 10.1.1.22
+steering_gear_physics_pod_steering_gear_physics_nats0_ip = 10.1.1.117

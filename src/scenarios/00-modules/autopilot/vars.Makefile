@@ -17,8 +17,8 @@ autopilot_pod_autopilot_extra_vars += \
 autopilot_pod_autopilot_extra_var_nmea_host = $(nmea_multicast_ip)
 autopilot_pod_autopilot_extra_var_nmea_port = $(nmea_multicast_port)
 
-autopilot_pod_autopilot_extra_var_autopilot_nmea_tcp_host = $(autopilot_pod_autopilot_eth0_ip)
-autopilot_pod_autopilot_extra_var_autopilot_nmea_tcp_port = $(autopilot_nmea_tcp_port)
+autopilot_pod_autopilot_extra_var_autopilot_nmea_tcp_host = 0.0.0.0
+autopilot_pod_autopilot_extra_var_autopilot_nmea_tcp_port = 5000
 
 autopilot_pod_autopilot_extra_var_rudder_plc_host = $(sgs_master_pod_openplc_eth0_ip)
 autopilot_pod_autopilot_extra_var_rudder_plc_port = 502

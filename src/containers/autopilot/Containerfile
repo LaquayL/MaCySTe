@@ -10,4 +10,4 @@ RUN \
 
 ENTRYPOINT [ "/usr/bin/env", "python3", "autopilot" ]
 
-EXPOSE 5000
+EXPOSE 5000:5000

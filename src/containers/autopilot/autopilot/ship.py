@@ -51,8 +51,8 @@ async def handle_client(reader, writer):
 
 async def listen_nmea():
     logger = logging.getLogger("listen_nmea")
-    tcp_host = os.getenv('NMEA_LISTENER_TCP_HOST', '0.0.0.0')
-    tcp_port = int(os.getenv('NMEA_LISTENER_TCP_PORT', 5000))  # Change this if needed
+    tcp_host = os.getenv('NMEA_TCP_LISTENER_HOST', '0.0.0.0')
+    tcp_port = int(os.getenv('NMEA_TCP_LISTENER_PORT', 5000))  # Change this if needed
 
     server = await asyncio.start_server(handle_client, tcp_host, tcp_port)
     logger.info(f"Listening for NMEA TCP on {tcp_host}:{tcp_port}")

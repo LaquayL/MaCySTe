@@ -6,6 +6,10 @@ spec:
   containers:
     - name: autopilot
       image: ${autopilot_image}
+      ports:
+      - containerPort: 5000
+        hostPort: 5000
+        protocol: TCP
       env:
       - { name: NATS_URL, value: "${nats_url}" }
       - { name: NMEA_HOST, value: "${nmea_host}" }

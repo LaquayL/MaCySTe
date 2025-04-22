@@ -4,9 +4,7 @@ FROM ${JAVASCRIPT_IMAGE} AS build
 COPY . /usr/src/app
 
 WORKDIR /usr/src/app
-RUN --mount=type=cache,dst=/usr/src/app/node_modules \
-  npm install && \
-  npm run build
+RUN npm install &&  npm run build
 
 FROM macyste_spa_hoster AS app
 COPY --from=build /usr/src/app/build /srv
